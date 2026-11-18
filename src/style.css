@@ -1,63 +1,172 @@
-h1 {
-  font-size: 50px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
+* {
+  box-sizing: border-box;
 }
-h2 {
-  margin: 0 0 5px;
-  font-size: 28px;
+
+:root {
+  --navy: #07172f;
+  --panel: rgba(20, 48, 79, 0.82);
+  --panel-light: rgba(96, 174, 226, 0.14);
+  --cyan: #66d6ff;
+  --text: #f4fbff;
+  --muted: #a9bed1;
+  --border: rgba(132, 210, 255, 0.22);
 }
+
 body {
-  background-image: url(../images/blue-digital-world-map.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(3, 20, 43, 0.72), rgba(3, 20, 43, 0.88)),
+    url("../images/blue-digital-world-map.jpg") center / cover fixed;
+  color: var(--text);
   font-family:
     "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-select {
-  display: block;
-  width: 100%;
-  font-size: 18px;
-  border-radius: 4px;
-  padding: 10px;
-}
+
 .container {
-  max-width: 600px;
-  margin: 60px auto;
-  background: #79afee;
-  padding: 30px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 30px;
-  opacity: 0.8;
-}
-.city {
-  display: flex;
-  margin: 10px 0;
-  justify-content: space-between;
-  padding: 30px 0;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
-}
-.city:last-child {
-  border: none;
-}
-.date {
+  width: min(680px, calc(100% - 32px));
+  margin: 32px auto;
+  padding: 34px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: linear-gradient(
+    145deg,
+    rgba(64, 148, 207, 0.22),
+    rgba(7, 23, 47, 0.92)
+  );
+  box-shadow:
+    0 24px 60px rgba(0, 11, 31, 0.55),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
   opacity: 0.7;
 }
-.time {
-  font-size: 48px;
-  font-weight: bold;
+
+h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(32px, 7vw, 48px);
+  letter-spacing: -1.5px;
+  text-shadow: 0 4px 24px rgba(102, 214, 255, 0.2);
 }
+
+select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--navy);
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+select:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 4px rgba(102, 214, 255, 0.16);
+}
+
+#cities {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.city {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  min-height: 150px;
+  margin: 0;
+  padding: 24px 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--panel-light);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.city:last-child {
+  border: 1px solid var(--border);
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 5vw, 32px);
+  letter-spacing: -0.5px;
+}
+.date {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.time {
+  white-space: nowrap;
+  font-size: clamp(38px, 8vw, 58px);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -2px;
+  text-shadow: 0 8px 28px rgba(102, 214, 255, 0.12);
+}
+
 .time small {
-  font-size: 24px;
+  display: inline-block;
+  margin-left: 5px;
+  color: var(--cyan);
+  font-size: 16px;
+  letter-spacing: 0;
   vertical-align: middle;
-  line-height: 48px;
+}
+
+#cities > a {
+  justify-self: center;
+  color: var(--cyan);
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 6px;
 }
 
 footer {
-  font-size: 14px;
-  color: whitesmoke;
+  margin-top: 18px;
+  color: rgba(244, 251, 255, 0.72);
+  font-size: 13px;
   text-align: center;
-  opacity: 0.7;
+}
+
+footer a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+@media (max-width: 560px) {
+  body {
+    align-items: start;
+  }
+
+  .container {
+    margin: 16px auto;
+    padding: 22px 16px;
+  }
+
+  .city {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .time {
+    font-size: 44px;
+  }
 }

@@ -10,7 +10,20 @@
   </head>
   <body>
     <div class="container">
-      <h1>🕑World Clock🕝</h1>
+      <h1>
+        <svg
+          aria-hidden="true"
+          width="42"
+          height="42"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
+          <circle cx="12" cy="12" r="9" stroke-width="1.8" />
+          <path d="M12 7v5l3.5 2" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        World Clock
+      </h1>
       <select id="city">
         <option value="">Select a city</option>
         <option value="current">My current location</option>
@@ -41,13 +54,17 @@
 
     <footer>
       <p>
-        Created by <strong>Christina Watson</strong>, open-sourced on
+        Created by
+        <a href="www.linkedin.com/in/christina-watson-751465386">
+          Christina Watson</a
+        >, open-sourced on
         <a
           href="https://github.com/depenhac-crypto/world-clock"
           target="_blank"
           rel="noopener noreferrer"
           >GitHub</a
         >
+        and hosted on <a href="https://worldclockcw.netlify.app/">Netlify</a>.
       </p>
     </footer>
     <script src="src/index.js"></script>
